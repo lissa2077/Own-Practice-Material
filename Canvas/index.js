@@ -26,6 +26,7 @@ class Sprite {
         },
         this.color = color;
         this.isAttacking = null;
+        this.health = 100;
     }
 
     draw() {
@@ -114,15 +115,6 @@ const keys = {
 }
 
 function rectangularCollision({rectangle1,rectangle2}){
-    //console.log(rectangle1);
-    /*console.log("a1",rectangle1.attackBox.position.x+rectangle1.attackBox.width);
-    console.log("a2",rectangle2.position.x);
-    
-    console.log("a",rectangle1.attackBox.position.x+rectangle1.attackBox.width >= rectangle2.position.x);
-    
-    console.log("b",rectangle1.attackBox.position.x <= rectangle2.position.x +rectangle2.width);
-    console.log("c",rectangle1.attackBox.position.y+rectangle1.attackBox.height >= rectangle2.position.y);
-    console.log("d",rectangle1.attackBox.position.y <= rectangle2.position.y + rectangle2.height);*/
     return (rectangle1.attackBox.position.x+rectangle1.attackBox.width >= rectangle2.position.x &&
         rectangle1.attackBox.position.x <= rectangle2.position.x +rectangle2.width &&
         rectangle1.attackBox.position.y+rectangle1.attackBox.height >= rectangle2.position.y&&
@@ -162,6 +154,8 @@ function animate(){
         rectangle2: enemy
     })){
         player.isAttacking = false;
+        enemy.health -= 20;
+        document.querySelector('#enemy_health_value').style.width = enemy.health+'%';
         console.log('go');
     }
 
@@ -170,6 +164,8 @@ function animate(){
         rectangle2: player
     })){
         enemy.isAttacking = false;
+        player.health -= 20;
+        document.querySelector('#player_health_value').style.width = player.health+'%';
         console.log('enemy go');
     }
 }
