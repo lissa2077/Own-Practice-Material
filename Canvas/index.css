@@ -23,6 +23,9 @@
     width: 100px;
     flex-shrink: 0;
     /*prevend flex to resize the box*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .player_health_bar,.enemy_health_bar{
